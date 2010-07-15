@@ -24,7 +24,7 @@
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;  
     params[gadgets.io.RequestParameters.NUM_ENTRIES] = new Number(entries);  
     params[gadgets.io.RequestParameters.GET_SUMMARIES] = summaries; 
-    var url = "http://pubservices.geolearning.com/api/geo_testing/open/catalog";  
+    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog";  
     gadgets.io.makeRequest(url, response, params);
   };
 
@@ -35,7 +35,7 @@
 
     // Display the feed title and description
     html += "<div><b>" + feed.Title + "</b></div>";
-    html += "<div>" + feed.Description + "</div><br>";
+    html += "<div>A list of available learning resources from GeoLearning</div><br>";
       
     // Access the data for a given entry
     if (feed.Entry) {
