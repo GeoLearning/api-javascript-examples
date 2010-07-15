@@ -21,10 +21,8 @@
 
   function getFeed() {  
     var params = {};  
-    params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;  
-    params[gadgets.io.RequestParameters.NUM_ENTRIES] = new Number(entries);  
-    params[gadgets.io.RequestParameters.GET_SUMMARIES] = summaries; 
-    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog";  
+    params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;  
+    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON";  
     gadgets.io.makeRequest(url, response, params);
   };
 
@@ -40,16 +38,19 @@
     // Access the data for a given entry
     if (feed.Entry) {
       for (var i = 0; i < feed.Entry.length; i++) {
+        var link = feed.Entry[i].link[0]["@href"];
+        
         html += "<div>"
-          + "<a target='_blank' href='" + feed.Entry[i].Link + "'>"
+          + "<a target='_blank' href='" + link + "'>"
           + feed.Entry[i].Title
           + "</a> ";
+          
         if (showdate==true)
         { 
           html += "<br><i>" + feed.Entry[i]["geo:LastModifiedDisplay"] + "</i>";
         }
         if (summaries==true) { 
-          html += "<br><i>" + feed.Entry[i].Summary + "</i>";
+          html += "<br><i>" + feed.Entry[i].summary + "</i>";
         }
         html += "</div>";
       }
