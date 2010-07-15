@@ -32,7 +32,7 @@
     var html = "";
 
     // Display the feed title and description
-    html += "<div><b>" + feed.Title + "</b></div>";
+    html += "<div><b>" + feed.title + "</b></div>";
     html += "<div>A list of available learning resources from GeoLearning</div><br>";
       
     // Access the data for a given entry
