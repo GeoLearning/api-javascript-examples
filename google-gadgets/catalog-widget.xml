@@ -28,6 +28,7 @@
 
   function response(obj) { 
     // obj.data contains the feed data
+    alert(obj.data);
     var feed = obj.data;
     var html = "";
 
