@@ -46,15 +46,7 @@
           + "</a> ";
         if (showdate==true)
         { 
-          // The feed entry Date field contains the timestamp in seconds
-          // since Jan. 1, 1970. To convert it to the milliseconds needed
-          // to initialize the JavaScript Date object with the correct date, 
-          // multiply by 1000.
-          var milliseconds = (feed.Entry[i].Date) * 1000; 
-          var date = new Date(milliseconds); 
-          html += date.toLocaleDateString();
-          html += " ";
-          html += date.toLocaleTimeString(); 
+          html += "<br><i>" + feed.Entry[i]["geo:LastModifiedDisplay"] + "</i>";
         }
         if (summaries==true) { 
           html += "<br><i>" + feed.Entry[i].Summary + "</i>";
