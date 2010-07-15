@@ -43,7 +43,7 @@
         
         html += "<div>"
           + "<a target='_blank' href='" + link + "'>"
-          + feed.entry[i].Title
+          + feed.entry[i].title
           + "</a> ";
           
         if (showdate==true)
