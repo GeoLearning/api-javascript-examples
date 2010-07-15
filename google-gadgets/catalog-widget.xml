@@ -10,6 +10,11 @@
   <Content type="html">
   <![CDATA[
   <style> #content_div { font-size: 80%;  margin: 5px; } </style>
+  <div id="content_form">
+    <form name="myForm" action="" onsubmit="JavaScript:return updateMe();">
+        <input type="text" id="query-param" value="" />
+    </form>
+  </div>
   <div id="content_div"></div>
   <script type="text/javascript">
 
@@ -18,11 +23,22 @@
   var showdate = prefs.getBool("show_date");
   var entries = prefs.getInt("num_entries");
   var summaries = prefs.getBool("show_summ");
-
+  var queryFor = "";
+  
+  function updateMe(){
+    try{
+        queryFor = document.getElementById('query-param').value;
+        getFeed();
+    }catch(err){
+    
+    }
+    return false;
+  }
+  
   function getFeed() {  
     var params = {};  
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;  
-    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON";  
+    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON&q=" + queryFor;  
     gadgets.io.makeRequest(url, response, params);
   };
 
@@ -30,10 +46,6 @@
     // obj.data contains the feed data
     var feed = obj.data.feed;
     var html = "";
-
-    // Display the feed title and description
-    html += "<div><b>" + feed.title + "</b></div>";
-    html += "<div>A list of available learning resources from GeoLearning</div><br>";
       
     // Access the data for a given entry
     if (feed.entry) {
