@@ -42,7 +42,7 @@
         queryFor = escape(document.getElementById('query-param').value);
         getFeed();
     }catch(err){
-    
+     alert(err);
     }
     return false;
   }
