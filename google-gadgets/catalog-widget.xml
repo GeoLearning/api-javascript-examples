@@ -80,7 +80,7 @@
         if (summaries==true && thisEntry.summary) { 
           html += "<br><i>" + thisEntry.summary + "</i>";
         }
-        html += "</div><br />";
+        html += "</div>";
       }
     }        
     document.getElementById('content_div').innerHTML = html;
