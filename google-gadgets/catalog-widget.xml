@@ -50,7 +50,7 @@
   function getFeed() {  
     var params = {};  
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;  
-    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON&q=" + queryFor + "&courses=" + courses + "&classes=" + classes + "&olrs=" + olrs + "&bundles=" + bundles + "&limit=" + entries;  
+    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON&q=" + queryFor;  
     alert(url);
     gadgets.io.makeRequest(url, response, params);
   };
