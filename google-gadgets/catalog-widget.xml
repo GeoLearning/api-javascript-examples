@@ -50,7 +50,7 @@
         { 
           html += "<br><i>" + thisEntry["geo:LastModifiedDisplay"] + "</i>";
         }
-        if (summaries==true) { 
+        if (summaries==true && thisEntry.summary) { 
           html += "<br><i>" + thisEntry.summary + "</i>";
         }
         html += "</div>";
