@@ -9,7 +9,7 @@
   <UserPref name="show_summ" display_name="Show Summaries?" datatype="bool" default_value="false"/>
   <Content type="html">
   <![CDATA[
-  <style> #content_div { font-size: 80%;  margin: 5px; background-color: #FFFFBF;} </style>
+  <style> #content_div { font-size: 80%;  margin: 5px; } </style>
   <div id="content_div"></div>
   <script type="text/javascript">
 
