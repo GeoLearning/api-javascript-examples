@@ -5,14 +5,18 @@
     scrolling="true">
   </ModulePrefs>
   <UserPref name="num_entries" display_name="Number of Entries:" default_value="5"/>
+  <UserPref name="show_courses" display_name="Show Courses?" datatype="bool" default_value="true"/>
+  <UserPref name="show_classes" display_name="Show Classes?" datatype="bool" default_value="true"/>
+  <UserPref name="show_olr" display_name="Show Online Resources?" datatype="bool" default_value="true"/>
+  <UserPref name="show_bundles" display_name="Show Bundles?" datatype="bool" default_value="true"/>
   <UserPref name="show_date" display_name="Show Last Modified Date?" datatype="bool" default_value="false"/>
   <UserPref name="show_summ" display_name="Show Summaries?" datatype="bool" default_value="false"/>
   <Content type="html">
   <![CDATA[
   <style> #content_div { font-size: 80%;  margin: 5px; } </style>
-  <div id="content_form">
+  <div id="content_form" align="center">
     <form name="myForm" action="" onsubmit="JavaScript:return updateMe();">
-        <input type="text" id="query-param" value="" />
+        Search: <input type="text" id="query-param" value="" /> <input type="submit" name="go" value="Go" />
     </form>
   </div>
   <div id="content_div"></div>
@@ -23,6 +27,11 @@
   var showdate = prefs.getBool("show_date");
   var entries = prefs.getInt("num_entries");
   var summaries = prefs.getBool("show_summ");
+  var courses = prefs.getBool("show_courses");
+  var classes = prefs.getBool("show_classes");
+  var olrs = prefs.getBool("show_olr");
+  var bundles = prefs.getBool("show_bundles");
+  
   var queryFor = "";
   
   function updateMe(){
@@ -38,7 +47,7 @@
   function getFeed() {  
     var params = {};  
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;  
-    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON&q=" + queryFor;  
+    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON&q=" + queryFor + "&courses=" + courses + "&classes=" + classes + "&olrs=" + olrs + "&bundles=" + bundles + "&limit=" + entries;  
     gadgets.io.makeRequest(url, response, params);
   };
 
