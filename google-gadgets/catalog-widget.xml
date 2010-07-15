@@ -59,8 +59,9 @@
     // obj.data contains the feed data
     var feed = obj.data.feed;
     alert(feed);
-    var html = "";
+    var html = url + "<br>";
       
+     alert(feed.entry); 
     // Access the data for a given entry
     if (feed.entry) {
       for (var i = 0; i < feed.entry.length; i++) {
