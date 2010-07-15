@@ -58,6 +58,7 @@
   function response(obj) { 
     // obj.data contains the feed data
     var feed = obj.data.feed;
+    alert(feed);
     var html = "";
       
     // Access the data for a given entry
