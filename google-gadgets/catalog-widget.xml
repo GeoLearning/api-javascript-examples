@@ -61,7 +61,6 @@
     alert(feed);
     var html = url + "<br>";
       
-     alert(feed.entry); 
     // Access the data for a given entry
     if (feed.entry) {
       for (var i = 0; i < feed.entry.length; i++) {
