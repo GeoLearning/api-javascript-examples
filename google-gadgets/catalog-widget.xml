@@ -37,21 +37,21 @@
     html += "<div>A list of available learning resources from GeoLearning</div><br>";
       
     // Access the data for a given entry
-    if (feed.Entry) {
-      for (var i = 0; i < feed.Entry.length; i++) {
-        var link = feed.Entry[i].link[0]["@href"];
+    if (feed.entry) {
+      for (var i = 0; i < feed.entry.length; i++) {
+        var link = feed.entry[i].link[0]["@href"];
         
         html += "<div>"
           + "<a target='_blank' href='" + link + "'>"
-          + feed.Entry[i].Title
+          + feed.entry[i].Title
           + "</a> ";
           
         if (showdate==true)
         { 
-          html += "<br><i>" + feed.Entry[i]["geo:LastModifiedDisplay"] + "</i>";
+          html += "<br><i>" + feed.entry[i]["geo:LastModifiedDisplay"] + "</i>";
         }
         if (summaries==true) { 
-          html += "<br><i>" + feed.Entry[i].summary + "</i>";
+          html += "<br><i>" + feed.entry[i].summary + "</i>";
         }
         html += "</div>";
       }
