@@ -39,7 +39,7 @@
   
   function updateMe(){
     try{
-        queryFor = document.getElementById('query-param').value;
+        queryFor = escape(document.getElementById('query-param').value);
         getFeed();
     }catch(err){
     
