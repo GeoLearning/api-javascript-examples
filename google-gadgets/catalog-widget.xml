@@ -11,6 +11,8 @@
   <UserPref name="show_bundles" display_name="Show Bundles?" datatype="bool" default_value="true"/>
   <UserPref name="show_date" display_name="Show Last Modified Date?" datatype="bool" default_value="false"/>
   <UserPref name="show_summ" display_name="Show Summaries?" datatype="bool" default_value="false"/>
+  <UserPref name="show_type" display_name="Show Item Type?" datatype="bool" default_value="false"/>
+  
   <Content type="html">
   <![CDATA[
   <style> #content_div { font-size: 80%;  margin: 5px; } </style>
@@ -31,6 +33,7 @@
   var classes = prefs.getBool("show_classes");
   var olrs = prefs.getBool("show_olr");
   var bundles = prefs.getBool("show_bundles");
+  var showType = prefs.getBool("show_type");
   
   var queryFor = "";
   
@@ -66,7 +69,10 @@
           + "<a target='_blank' href='" + link + "'>"
           + thisEntry.title
           + "</a> ";
-          
+        
+        if(showType==true){
+            html += "<br><strong>Type:</strong><i>" + thisEntry["geo:SecondaryCatalogType"] + "</i>";
+        }
         if (showdate==true)
         { 
           html += "<br><i>" + thisEntry["geo:LastModifiedDisplay"] + "</i>";
@@ -74,7 +80,7 @@
         if (summaries==true && thisEntry.summary) { 
           html += "<br><i>" + thisEntry.summary + "</i>";
         }
-        html += "</div>";
+        html += "</div><br />";
       }
     }        
     document.getElementById('content_div').innerHTML = html;
