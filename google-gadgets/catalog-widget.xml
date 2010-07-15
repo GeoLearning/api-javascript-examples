@@ -4,8 +4,8 @@
     title_url="http://www.geolearning.com" 
     scrolling="true">
   </ModulePrefs>
-  <UserPref name="show_date" display_name="Show Dates?" datatype="bool" default_value="false"/>
   <UserPref name="num_entries" display_name="Number of Entries:" default_value="5"/>
+  <UserPref name="show_date" display_name="Show Last Modified Date?" datatype="bool" default_value="false"/>
   <UserPref name="show_summ" display_name="Show Summaries?" datatype="bool" default_value="false"/>
   <Content type="html">
   <![CDATA[
@@ -28,7 +28,6 @@
 
   function response(obj) { 
     // obj.data contains the feed data
-    alert(obj.data.feed);
     var feed = obj.data.feed;
     var html = "";
 
@@ -39,19 +38,20 @@
     // Access the data for a given entry
     if (feed.entry) {
       for (var i = 0; i < feed.entry.length; i++) {
-        var link = feed.entry[i].link[0]["@href"];
+        var thisEntry = feed.entry[i];
+        var link = thisEntry.link[0]["@href"];
         
         html += "<div>"
           + "<a target='_blank' href='" + link + "'>"
-          + feed.entry[i].title
+          + thisEntry.title
           + "</a> ";
           
         if (showdate==true)
         { 
-          html += "<br><i>" + feed.entry[i]["geo:LastModifiedDisplay"] + "</i>";
+          html += "<br><i>" + thisEntry["geo:LastModifiedDisplay"] + "</i>";
         }
         if (summaries==true) { 
-          html += "<br><i>" + feed.entry[i].summary + "</i>";
+          html += "<br><i>" + thisEntry.summary + "</i>";
         }
         html += "</div>";
       }
