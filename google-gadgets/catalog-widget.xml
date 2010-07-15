@@ -28,8 +28,8 @@
 
   function response(obj) { 
     // obj.data contains the feed data
-    alert(obj.data);
-    var feed = obj.data;
+    alert(obj.data.feed);
+    var feed = obj.data.feed;
     var html = "";
 
     // Display the feed title and description
