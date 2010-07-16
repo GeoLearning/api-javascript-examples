@@ -59,7 +59,7 @@
     // obj.data contains the feed data
     var feed = obj.data.feed;
     var html = "No Results Found";
-      
+      alert('hi');
     if(feed.entry && feed.entry.length){
 		for(var i=0; i<=feed.entry.length-1; i++) {
 		    alert('Many');
@@ -77,22 +77,22 @@
   function renderEntry(thisEntry){
   	    var link = thisEntry.link[0]["@href"];
         
-        var html += "<div>"
+        var content = "<div>"
           + "<a target='_blank' href='" + link + "'>"
           + thisEntry.title
           + "</a> ";
         
         if(showType==true){
-            html += "<br><strong>Type:</strong><i>" + thisEntry["geo:SecondaryCatalogType"] + "</i>";
+            content += "<br><strong>Type:</strong><i>" + thisEntry["geo:SecondaryCatalogType"] + "</i>";
         }
         if (showdate==true)
         { 
-          html += "<br><i>" + thisEntry["geo:LastModifiedDisplay"] + "</i>";
+          content += "<br><i>" + thisEntry["geo:LastModifiedDisplay"] + "</i>";
         }
         if (summaries==true && thisEntry.summary) { 
-          html += "<br><i>" + thisEntry.summary + "</i>";
+          content += "<br><i>" + thisEntry.summary + "</i>";
         }
-        html += "</div>";
+        content += "</div>";
         return html;
   };
   
