@@ -62,7 +62,7 @@
       alert('hi');
     if(feed.entry && feed.entry.length){
 		for(var i=0; i<=feed.entry.length-1; i++) {
-		    alert('Many');
+		    alert(feed.entry.length);
 			var thisEntry = feed.entry[i];
 			html = renderEntry(thisEntry);
 		}
@@ -93,7 +93,7 @@
           content += "<br><i>" + thisEntry.summary + "</i>";
         }
         content += "</div>";
-        return html;
+        return content;
   };
   
   gadgets.util.registerOnLoadHandler(getFeed);
