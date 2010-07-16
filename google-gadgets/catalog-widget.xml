@@ -58,7 +58,7 @@
   function response(obj) { 
     // obj.data contains the feed data
     var feed = obj.data.feed;
-    var html = "No Results Found";
+    var html = "";
   
     if(feed.entry && feed.entry.length){
 		for(var i=0; i<=feed.entry.length-1; i++) {
@@ -67,6 +67,8 @@
 		}
 	}else if(feed.entry){
 			html = renderEntry(feed.entry);
+	}else {
+		html = "No results found.";
 	}
             
     document.getElementById('content_div').innerHTML = html;
