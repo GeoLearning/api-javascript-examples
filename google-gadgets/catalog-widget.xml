@@ -59,15 +59,13 @@
     // obj.data contains the feed data
     var feed = obj.data.feed;
     var html = "No Results Found";
-      alert('hi');
+  
     if(feed.entry && feed.entry.length){
 		for(var i=0; i<=feed.entry.length-1; i++) {
-		    alert(feed.entry.length);
 			var thisEntry = feed.entry[i];
-			html = renderEntry(thisEntry);
+			html += renderEntry(thisEntry);
 		}
 	}else if(feed.entry){
-			alert('Many');
 			html = renderEntry(feed.entry);
 	}
             
