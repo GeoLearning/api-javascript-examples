@@ -58,16 +58,24 @@
   function response(obj) { 
     // obj.data contains the feed data
     var feed = obj.data.feed;
-    alert(feed.entry);
     var html = "";
       
-    // Access the data for a given entry
-    if (feed.entry) {
-      for (var i = 0; i < feed.entry.length; i++) {
-        var thisEntry = feed.entry[i];
-        var link = thisEntry.link[0]["@href"];
+    if(feed.entry && feed.entry.length){
+		for(var i=0; i<=feed.entry.length-1; i++) {
+			var thisEntry = feed.entry[i];
+			html = _renderEntry(thisEntry);
+		}
+	}else if(feed.entry){
+			html = _renderEntry(feed.entry);
+	}
+            
+    document.getElementById('content_div').innerHTML = html;
+  };
+  
+  function _renderEntry(thisEntry){
+  	   var link = thisEntry.link[0]["@href"];
         
-        html += "<div>"
+        var html += "<div>"
           + "<a target='_blank' href='" + link + "'>"
           + thisEntry.title
           + "</a> ";
@@ -83,10 +91,9 @@
           html += "<br><i>" + thisEntry.summary + "</i>";
         }
         html += "</div>";
-      }
-    }        
-    document.getElementById('content_div').innerHTML = html;
-  };
+        return html;
+  }
+  
   gadgets.util.registerOnLoadHandler(getFeed);
   </script>
   ]]>
