@@ -58,22 +58,24 @@
   function response(obj) { 
     // obj.data contains the feed data
     var feed = obj.data.feed;
-    var html = "";
+    var html = "No Results Found";
       
     if(feed.entry && feed.entry.length){
 		for(var i=0; i<=feed.entry.length-1; i++) {
+		    alert('Many');
 			var thisEntry = feed.entry[i];
-			html = _renderEntry(thisEntry);
+			html = renderEntry(thisEntry);
 		}
 	}else if(feed.entry){
-			html = _renderEntry(feed.entry);
+			alert('Many');
+			html = renderEntry(feed.entry);
 	}
             
     document.getElementById('content_div').innerHTML = html;
   };
   
-  function _renderEntry(thisEntry){
-  	   var link = thisEntry.link[0]["@href"];
+  function renderEntry(thisEntry){
+  	    var link = thisEntry.link[0]["@href"];
         
         var html += "<div>"
           + "<a target='_blank' href='" + link + "'>"
