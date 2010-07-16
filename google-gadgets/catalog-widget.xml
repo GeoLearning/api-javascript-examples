@@ -12,6 +12,8 @@
   <UserPref name="show_date" display_name="Show Last Modified Date?" datatype="bool" default_value="false"/>
   <UserPref name="show_summ" display_name="Show Summaries?" datatype="bool" default_value="false"/>
   <UserPref name="show_type" display_name="Show Item Type?" datatype="bool" default_value="false"/>
+  <UserPref name="services_location" display_name="Services Server" default_value="pubservices.geolearning.com"/>
+  <UserPref name="domain" display_name="Domain Mapping" default_value="geoproductmanagement"/>
   
   <Content type="html">
   <![CDATA[
@@ -34,6 +36,8 @@
   var olrs = prefs.getBool("show_olr");
   var bundles = prefs.getBool("show_bundles");
   var showType = prefs.getBool("show_type");
+  var server = prefs.getString("services_location");
+  var domain = prefs.getString("domain");
   
   var queryFor = "";
   
@@ -50,7 +54,7 @@
   function getFeed() {  
     var params = {};  
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.JSON;  
-    var url = "http://pubservices.geolearning.com/api/geoproductmanagement/open/catalog?format=JSON&q=" + queryFor;  
+    var url = "http://" + server + "/api/" + domain + "/open/catalog?format=JSON&q=" + queryFor;  
 
     gadgets.io.makeRequest(url, response, params);
   };
